@@ -1,0 +1,58 @@
+<div class="container-fluid cf-dashboard" style="text-align: center;">
+    <div class="row">
+        <div class="col-md-12 col-12" style="padding-bottom: 2%;" >
+            <h2 style="color: white;">WORKSHOPS LISTS</h2>
+            <a href="/backstage/workshops" style="text-decoration: none; color: yellow;">Back to main page</a>
+            <br>
+            <p class="text-muted">Workshops aligned based on Dates.</p>
+        </div>
+        <% if (workshops.length > 0) { %>
+
+          <% workshops.forEach(workshop => { %>
+            <div class="col-md-6" style="margin-bottom: 2%;">
+            
+                <div class="card" style="width: 25rem; color: white; border-radius: 10%; margin: auto;">
+                    <div class="card-body">
+                      <div class="card-header" style="color: black; background-color: rgba(208,162,242); margin-bottom: 5%;">
+                        <h5 class="card-title" style="margin-bottom: 0%;"><%= workshop.title %></h5>
+                    </div>
+                      
+                      <h6 class="card-subtitle mb-2"><%= workshop.date.toLocaleDateString() %></h6>
+                      <p class="card-text" style="padding: 5% 0%;"><%= workshop.desc%></p>
+                      <p class="card-text"><span style="color: yellow;">Type : </span><%= workshop.type%></p>
+                      <% if (workshop.type === 'zoom') { %>
+                        <p class="card-text"><span style="color: yellow;">Zoom ID :</span> <br> <%= workshop.zoomID %></p>
+                      <% } else { %>
+                        <p class="card-text"><span style="color: yellow;">Venue Planned :</span> <br> <%= workshop.venue %></p> 
+                      <% } %>
+                      <a href="/backstage/subscribers/<%= workshop._id %>" class="card-link" style="color: violet; text-decoration: none;">Subscribers List</a>
+                      <% if ((workshop.date > today) ) { %>
+    
+                      <% if (workshop.status === true) { %>
+                        <a href="/backstage/stopSubscriptions/<%= workshop._id %>" class="card-link" style="color: lightcoral; text-decoration: none;">Disable Subscriptions</a>
+                      <% } else { %>
+                        <a href="/backstage/startSubscriptions/<%= workshop._id %>" class="card-link" style="color: lightgreen; text-decoration: none;">Enable Subscriptions</a>
+                      <% } %>
+    
+                      <br><a href="/backstage/removeWorkshop/<%= workshop._id %>" class="card-link" style="color: lightskyblue; text-decoration: none;">Remove Workshop</a>
+    
+                      <% } else { %>
+                       
+                        <a href="/backstage/removeWorkshop/<%= workshop._id %>" class="card-link" style="color: lightskyblue; text-decoration: none;"> Workshop Over | Remove</a>
+    
+                      <% } %>
+    
+                    </div>
+                </div>
+    
+            </div>
+            <% }) %>
+
+        <% } else { %>
+         
+          <p style="color: yellow; padding: 5% 5% 10%;">Workshops Yet to create.</p>
+         
+        <% } %>
+        
+    </div>
+</div>

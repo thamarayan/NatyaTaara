@@ -1,0 +1,46 @@
+<div class="containerfluid cf-signup">
+    <div class="row">
+        <div class="col-md-4 col-2" style="text-align: right;">
+            <svg width="10" height="100%">
+                <rect width="10" height="100%" style="fill:rgb(208, 162, 242);stroke-width:3;stroke:rgb(0,0,0)" />
+              </svg>
+              
+        </div>
+        <div class="col-md-4 col-8" style="color: white;">
+            
+            <div class="mb-3">
+                <h5>New User? Sign Up</h5>
+                <img src="/images/logo1.png" style="width: 20%;" alt="">
+            </div>
+            <form action="/user/signup" method="post">
+              <% if (messages.length>0) { %>
+               
+                 <% messages.forEach(message => { %>
+                  <p> <span style="background-color: rgb(208, 162, 242); color: black; padding: 3px;"><%= message %></span></p>
+                 <% }) %>
+               
+              <% } %>
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Email address</label>
+                <input type="email" name="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+              </div>
+              <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" name="password" class="form-control" id="password" placeholder="Enter your password">
+              </div>
+              <input type="hidden" value="<%= csrfToken %>" name="_csrf">
+              <!-- <div class="mb-3">
+                <label for="cnfm_password" class="form-label">Confirm Password</label>
+                <input type="password" class="form-control" id="cnfm_password" placeholder="Retype your password">
+                <label id="message"></label>
+              </div> -->
+              
+              <div class="mb-3">
+                  <button type="submit" class="btn btn-sm btn-outline-warning">Sign Up</button>
+                  <div id="emailHelp" class="form-text">Registered User? Please <a href="/user/signin" style="text-decoration: none; color: rgb(208, 162, 242);">Sign In</a></div>
+              </div>
+            </form>
+        </div>
+        <div class="col-md-4 col-2"></div>
+    </div>
+</div>

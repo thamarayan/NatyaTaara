@@ -1,0 +1,54 @@
+<div class="container-fluid cf-manualEntry">
+    <div class="row">
+        <a href="/backstage/dashboard" style="text-decoration: none; color:yellow; text-align: center; padding-bottom: 3%;">Back to Dashboard</a>
+        <div class="col-md-3 col-2" style="text-align: right;">
+            <svg width="10" height="700">
+                <rect width="10" height="700" style="fill:rgb(208, 162, 242);stroke-width:3;stroke:rgb(0,0,0)" />
+              </svg>
+        </div>
+        <div class="col-md-6 col-9">
+            <h2 style="color: rgb(208, 162, 242);">Manual Student Registration</h2>
+            <form action="/backstage/manualEntry" method="post" style="color: white;">
+                <div class="mb-3">
+                    <label for="studentName" class="form-label"><span style="color: yellow;">Student Name</span></label>
+                    <input type="text" pattern="[a-zA-Z]+" required oninvalid="setCustomValidity('Please enter a valid name.')" oninput="this.setCustomValidity('')" name="studentName" class="form-control" id="studentName"  placeholder="Student's Name...">
+                </div>
+                <div class="mb-3">
+                    <label for="studentAge" class="form-label"><span style="color: yellow;">Age</span></label>
+                    <input type="number" min="6" max="80" required name="studentAge" class="form-control" id="studentAge" placeholder="Age... ">
+                </div>
+                <div class="mb-3">
+                    <label for="contact" class="form-label"><span style="color: yellow;">Contact</span></label>
+                    <input type="tel" name="contact" required pattern="[789][0-9]{9}" oninvalid="setCustomValidity('Please enter valid contact.')" oninput="this.setCustomValidity('')" class="form-control" id="contact" placeholder="Contact No... ">
+                </div>
+                <div class="mb-3">
+                    <label for="address" class="form-label"><span style="color: yellow;">Address</span></label>
+                    <textarea type="text" name="address" required class="form-control" rows="3" id="address" placeholder="Address... "></textarea>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Course Enrolled</label>
+                    <% if (courses.length > 0) { %>
+                     
+                    <% courses.forEach(course => { %>
+                     
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="courseSelected" value="<%= course._id %>" id="flexRadioDefault0">
+                        <label class="form-check-label" for="flexRadioDefault0">
+                          <%= course.title %> | <%= course.level %>
+                        </label>
+                    </div>
+
+                    <% }) %>
+                    
+                    <% } %>
+                </div>
+                <div class="mb-3">
+                    <button class="btn btn-primary btn-sm">Add</button>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-3">
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,174 @@
+<div class="container-fluid cf-profile">
+    <div class="row">
+        <div class="col-md-12 col-12">
+            
+            <p>Welcome <span style="color: yellow;"><%= user %></span></p> 
+            <p><a href="/onlineClass" style="text-decoration: none; color: rgb(208, 162, 242);font-weight: bold;">New Student Enrolment ?</a></p>
+            <p>Select a Course - Complete the Registration</p>
+            
+            <% if (courses.length > 0) { %>
+                <h2 style="text-align:center; font-weight: bold; color:rgb(208, 162, 242)">Course Register</h2>
+                <div class="table-responsive">
+
+                
+                <table class="table" style="color:white">
+                    <thead>
+                      <tr>
+                        <th scope="col">Fees Status</th>
+                        <th scope="col">Student</th>
+                        <th scope="col">Age</th>
+                        <th scope="col">Contact</th>
+                        <th scope="col">Course Enrolled</th>
+                        <th scope="col">Course Type</th>
+                        <th scope="col">Course Details</th>                        
+                        
+                      </tr>
+                    </thead>
+                    <tbody>
+                       
+                    <% courses.forEach(course => { %>
+                      <tr> 
+                        <td>
+                          <% if (course.studentStatus) { %>
+
+                            <% if (course.feesStatus) { %>
+                              Paid
+                              <% } else { %>
+                               <form action="/user/create/orderId" method="post">
+                                 <input type="hidden" value="<%= csrfToken %>" name="_csrf">
+                                 <input type="hidden" value="<%= course.course.fees %>" name="courseFees">
+                                 <input type="hidden" value="<%=course._id%>" name="courseTag">
+                                 <button type="submit" class="btn btn-sm btn-warning">Pay  &#8377;<%= course.course.fees %>/-</button>
+                               </form>
+                             <% } %>
+
+                          <% } else { %>
+
+                            <p>Contact Office</p>
+                            
+                          <% } %>
+                            
+                        </td>
+                        <td><%= course.studentName %></td>
+                        <td><%= course.studentAge %></td>
+                        <td><%= course.contact %></td>
+                        <td><%= course.course.title %></td>
+                        <td><%= course.course.classType %></td>
+                        <td>
+                          <% if (course.studentStatus) { %>
+                          
+                            <button type="button" class="btn btn-sm btn-outline-warning" data-bs-toggle="modal" data-bs-target="#staticBackdrop-<%= course._id %>">
+                              View Course Details
+                            </button>
+                          
+                          <% } else { %>
+                          
+                         <p>Not Available</p>
+                          
+                          <% } %>
+                            <!-- Button trigger modal -->
+
+  
+  <!-- Modal -->
+  <div class="modal fade" id="staticBackdrop-<%= course._id %>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel" style="color: black;">Enrolled Course</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <div class="col-md-12 cards" style="padding: 0%;">
+                <div class="card mb-3" style="max-width: 840px;">
+                    <div class="row g-0">
+                      <div class="col-md-4">
+                        <img src="<%= course.course.imagePath %>" class="img-fluid rounded-start" alt="...">
+                      </div>
+                      <div class="col-md-8">
+                        
+                        <div class="card-body">
+                          
+                          <h5 class="card-title"><%= course.course.title %></h5>
+                          <p class="card-text">Age Group : <%= course.course.ageGroup %></p>
+                          <p class="card-text">Level : <%= course.course.level %></p>
+                          <p class="card-text"><%= course.course.classType %></p>
+                          <p class="card-text">
+                            <table class="table" style="color:white">
+                              <thead>
+                              <tr>
+                                <th scope="col">Sessions</th>
+                                <th scope="col">Timings</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td><%= course.course.session1 %><s/td>
+                                <td><%= course.course.timing1 %></td>
+                              </tr>
+                              <tr>
+                                <td><%= course.course.session2 %></td>
+                                <td><%= course.course.timing2 %></td>
+                              </tr>
+                            </tbody>
+                            </table>
+                          </p>
+                          <p class="card-text">Fees : &#8377; <%= course.course.fees %> /-</p>
+                          
+                        </div>
+                        
+                      </div>
+                    </div>
+                  </div>
+            </div>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary btn-sm" data-bs-dismiss="modal">Ok</button>
+        </div>
+      </div>
+    </div>
+  </div>
+                        
+                        </td>
+                             
+                      </tr>
+                      <% }) %>                  
+                    </tbody>
+                  </table>
+
+                </div>
+           
+            <% } %>
+                
+            
+        </div>
+    </div>
+</div>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<!-- <script>
+  var orderId ;
+$(document).ready(function(){
+    var settings = {
+  "url": "/user/create/orderId",
+  "method": "POST",
+  "timeout": 0,
+  "headers": {
+    "Content-Type": "application/json"
+  },
+  "data": JSON.stringify({
+    "amount": "50000"
+  }),
+};
+
+//creates new orderId everytime
+$.ajax(settings).done(function (response) {
+
+  orderId=response.orderId;
+  console.log(orderId);
+  $("button").show();
+});
+});
+</script> -->
+

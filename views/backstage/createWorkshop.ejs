@@ -1,0 +1,69 @@
+<div class="container-fluid cf-dashboard">
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <h2 style="color: white;">Create a Workshop</h2>
+            <a href="/backstage/workshops" style="text-decoration: none; color: yellow;">Back to main page</a><br>
+            <form action="/backstage/createWorkshop" method="post" style="text-align: left; padding-top: 2%;"  enctype="multipart/form-data">
+                <div class="mb-3">
+                    <label for="wName" class="form-label"><span style="color: yellow;">Title</span></label>
+                    <input type="text" name="wName" required class="form-control" id="wName" placeholder="Workshop Title ">
+                </div>
+                <div class="mb-3">
+                    <label for="wDesc" class="form-label"><span style="color: yellow;">Description</span></label>
+                    <input type="text" name="wDesc" required class="form-control" id="wDesc" placeholder="About Workshop ">
+                </div>
+                <div class="mb-3">
+                    <label for="wDate" class="form-label"><span style="color: yellow;">Date</span></label><br>
+                    <input type="date" name="wDate" required class="" id="wDate" placeholder="Workshop Date ">
+                </div>
+                <div class="mb-3">
+                    <label for="wDate" class="form-label"><span style="color: yellow;">Time</span></label><br>
+                    <input type="time" name="wTime" required class="" id="wTime" placeholder="Workshop Time ">
+                </div>
+                <div class="mb-3">
+                    <label for="wType" class="form-label"><span style="color: yellow;">Type</span></label>
+                    <select class="form-select" name="wType" id="wType" aria-label="Default select example">
+                        <option selected>Workshop Type</option>
+                        <option value="zoom">Zoom Meeting</option>
+                        <option value="live">Live</option>
+                      </select>
+                </div>
+                <div class="mb-3">
+                    <label for="wVenue" class="form-label"><span style="color: yellow;">Venue</span></label>
+                    <input type="text" name="wVenue" required class="form-control" id="wVenue" placeholder="Venue ">
+                </div>
+                <div class="mb-3">
+                    <label for="wZoomID" class="form-label"><span style="color: yellow;">Zoom ID</span></label>
+                    <input type="text" name="wZoomID" required class="form-control" id="wZoomID" placeholder="Zoom ID ">
+                </div>
+                <div class="mb-3">
+                    <label for="wFees" class="form-label"><span style="color: yellow;">Fees</span></label>
+                    <input type="number" name="wFees" required class="form-control" id="wFees" placeholder="Fees Amount ">
+                </div>
+                <div class="mb-3">
+                    <label for="workshopPoster" class="form-label"><span style="color: yellow;">Poster</span></label>
+                    <input type="file" name="workshopPoster" required class="form-control" id="workshopPoster">
+                </div>
+                <button class="btn btn-sm btn-primary">Create Workshop</button>
+            </form>
+        </div>
+        <div class="col-md-3">
+        </div>
+        
+    </div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+    $('#wType').change(function() {
+    if( $(this).val() == 'zoom') {
+        $('#wVenue').prop( "disabled", true );
+        $('#wZoomID').prop( "disabled", false );
+    } else if( $(this).val() == 'live') {       
+        $('#wVenue').prop( "disabled", false );
+        $('#wZoomID').prop( "disabled", true );
+    }
+});
+
+</script>

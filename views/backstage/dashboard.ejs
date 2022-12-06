@@ -1,0 +1,67 @@
+<div class="container-fluid cf-dashboard">
+    <div class="row">
+        <div class="col-md-12 col-12">
+            <h1 style="color: yellow; text-align: center;">Welcome to BackStage</h1>
+            <a href="/backstage/logout" role="button" class="btn btn-sm btn-primary">LogOut</a>
+        </div>
+        <div class="col-md-12 col-12 dashboardLinks">
+            <div class="row">
+                <div class="col-md-3">
+                    <a href="/backstage/getRegister" role="button" class="btn btn-warning btn-sm btns">Course Register</a>
+                    <p class="text-muted">List of students, their courses & fees status</p>
+                </div>
+                <div class="col-md-3">
+                    <a href="/backstage/students" role="button" class="btn btn-primary btn-sm btns">Students List</a>
+                    <p class="text-muted">Students Contact & Address - View & Update</p>
+                </div>
+                <div class="col-md-3">
+                    <a href="/backstage/courses" role="button" class="btn btn-success btn-sm btns">Courses</a>
+                    <p class="text-muted">NatyaTaara Courses - To update course details</p>
+                </div>
+                <div class="col-md-3">
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-sm btn-primary btns" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        Reset Payments
+                    </button>
+                    <p class="text-muted">To Reset all students payments on month end</p>
+                    
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Reset payments</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                            <h2>Are you sure to reset all students' payments? </h2>
+                            </div>
+                            <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+                            <a type="button" href="/backstage/resetPayments" class="btn btn-primary">Yes</a>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <a href="/backstage/feesUpdation" role="button" class="btn btn-primary btn-sm btns">Custom Fees Updation</a>
+                    <p class="text-muted">Students fees status bulk updation</p>
+                </div>
+                <div class="col-md-3">
+                    <a href="/backstage/manualEntry" role="button" class="btn btn-primary btn-sm btns">Manual Student Entry</a>
+                    <p class="text-muted">Manual Students Entry by Admin</p>
+                </div>
+                <div class="col-md-3">
+                    <a href="/backstage/workshops" role="button" class="btn btn-warning btn-sm btns">Workshops</a>
+                    <p class="text-muted">Workshops Creation/ Details</p>
+                </div>
+                <!-- <div class="col-md-3">
+                    <a href="/backstage/feesPending" role="button" class="btn btn-primary btn-sm btns">Mark Fees Pending</a>
+                    <p class="text-muted">If any student miss payments</p>
+                </div> -->
+            </div>
+        </div>
+    </div>
+</div>
+ 

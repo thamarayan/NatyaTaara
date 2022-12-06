@@ -1,0 +1,70 @@
+<section>
+
+  <!-- Navbar section -->
+<nav class="navbar navbar-dark navbar-expand-lg">
+  <div class="container-fluid nav-cf">
+    <a class="navbar-brand" href="/"> <img src="/images/logo2.png" style="width: 50%;" alt=""> </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/">Home</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Classes
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="/onlineclass">Online Class</a></li>
+            <li><a class="dropdown-item" href="/studioclass">Studio Class</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/workshops">Workshops</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/aboutus">About</a>
+        </li>
+        <!-- <li class="nav-item">
+          <a class="nav-link" href="/spaceForRent">Rent Our Studio</a>
+        </li> -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="bi bi-person-circle"></i> Users
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <% if (login) { %>
+                <li><a class="dropdown-item" href="/user/profile">Profile</a></li>
+                <li><a class="dropdown-item" href="/user/logout">Logout</a></li>
+              <% } else { %>
+                <li><a class="dropdown-item" href="/user/signin">Sign In</a></li>
+                <li><a class="dropdown-item" href="/user/signup">New User? Sign up</a></li>               
+            <% } %>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a href="/backstage" class="nav-link"><i class="bi bi-command"></i></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" target="_blank" href="https://wa.me/919789815950"><i class="bi bi-whatsapp"></i></a>
+        </li>
+        <li class="nav-item">
+          <a href="https://www.youtube.com/channel/UCutc-yW6rOt12TyVFAcptpQ" target="_blank" class="nav-link"><i class="bi bi-youtube"></i></a>
+        </li>
+        <li class="nav-item">
+          <a href="https://www.instagram.com/natyataara/" target="_blank" class="nav-link"><i class="bi bi-instagram"></i></a>
+        </li>
+        <li class="nav-item">
+         <a href="https://www.google.com/search?q=natyataara+dance+company&oq=natyataara+dance+&aqs=chrome.0.0i355i512j46i175i199i512j69i57j69i60j69i61j69i60.3923j0j4&sourceid=chrome&ie=UTF-8#lrd=0x3a5266d99e1ea537:0xdb4ede938020d578,1,,," target="_blank"><img src="/images/greview.png" alt="" class="greview nav-link" style="width:60px; height:50px"></a>
+          
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+</section>
+
+

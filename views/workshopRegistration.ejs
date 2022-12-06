@@ -1,0 +1,84 @@
+<div class="container-fluid cf-dashboard">
+    <div class="row">
+        <div class="col-md-12">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                  <li class="breadcrumb-item"><a class="pageLinks" href="/"><i class="bi bi-house-fill"></i></a></li>
+                  <li class="breadcrumb-item"><a class="pageLinks" href="/workshops">WORKSHOPS</a></li>
+                  <li class="breadcrumb-item active" aria-current="page" style="color: white;"><%= workshop.title %></li>
+                </ol>
+              </nav>
+        </div>
+        <div class="col-md-8" style="border: 2px rgb(208,161,242) solid; border-top-left-radius:5px; border-bottom-left-radius:5px;">
+            <img src="\<%= workshop.imagePath %>" alt="" style="width: 100%;">
+        </div> 
+        <div class="col-md-4" style="background-color: #f5f5f5;border: 2px rgb(208,161,242) solid;">
+            <div style="background-color: rgb(208,161,242);">
+                <h5 style="padding: 3% 0%;">EVENT DETAIL</h5>
+            </div>
+            <table class="table ">
+                
+                <tbody>
+                  <tr>
+                    <td class="tableContent"><%= workshop.title %></td>
+                  </tr>
+                  <tr>
+                    <td class="tableContent1">"<%= workshop.desc %>"</td>
+                  </tr>
+                  <tr>
+                    <td class="tableContent2"><%=workshop.date.toString().slice(0,15) %>  -  <%=workshop.time %></td>
+                  </tr>
+                  <tr>
+                      <% if (workshop.type === 'zoom') { %>
+                        <td class="tableContent1">Zoom Meeting</td>
+                      <% } else { %>
+                        <td class="tableContent1">Venue : <%= workshop.venue %></td>
+                      <% } %>
+                  </tr>
+                  <tr>
+                    <td><a href="#workshopForm" class="btn btn-sm" style="background-color:rgb(208,161,242);" role="button">Enroll | <%= workshop.fees %></a></td>
+                  </tr> 
+                </tbody>
+
+            </table>
+
+        </div>
+        <div class="col-md-3"></div>
+        <div class="col-md-6" id="workshopForm" style="padding: 4%;">
+            <h2 style="color: black; background-color:rgb(208,161,242); padding: 1%; border-radius: 5px;">Enroll for the Workshop</h2>
+
+            <form action="/createWorkshop1" method="post" style="text-align: left; padding-top: 2%;">
+                <div class="mb-3">
+                    <label for="wName" class="form-label"><span style="color: yellow;">Participant Name</span></label>
+                    <input type="text" name="wName" required class="form-control" id="wName" placeholder="Participant Name ">
+                </div>
+                <div class="mb-3">
+                    <label for="wContact" class="form-label"><span style="color: yellow;">Contact</span></label><br>
+                    <input type="text" name="wContact" required class="form-control" id="wContact" placeholder="Participant Contact ">
+                </div>
+                <div class="mb-3">
+                    <label for="wEmail" class="form-label"><span style="color: yellow;">Email</span></label><br>
+                    <input type="email" name="wEmail" required class="form-control" id="wEmail" placeholder="Participant E Mail ">
+                </div>
+                <div class="mb-3" style="color: white;">
+                    <h5 style="color: white;margin-bottom: 2%;">Workshop Details</h5>
+                    <input type="hidden" name="workshopID" value="<%= workshop._id%>">
+                    <label class="form-label"> <span style="color: yellow;">Title :</span></label> &nbsp;
+                    <label class="form-label"><%=workshop.title %> </label> <br>
+                    <label class="form-label"> <span style="color: yellow;">Description :</span></label> &nbsp;
+                    <label class="form-label"><%=workshop.desc %> </label> <br>
+                    <label class="form-label"><span style="color: yellow;">Date :</span></label> &nbsp;
+                    <label class="form-label"><%=workshop.date.toString().slice(0,15) %>  -  <%=workshop.time %></label> <br>
+                    <label class="form-label"><span style="color: yellow;">Type :</span></label> &nbsp;
+                    <label class="form-label"><%=workshop.type %> </label> <br>
+                    <label class="form-label"><span style="color: yellow;">Fees :</span></label> &nbsp;
+                    <label class="form-label">&#8377; <%=workshop.fees %> </label>
+                </div>
+                <button type="submit" class="btn btn-sm btn-warning">Enroll</button>
+            </form>
+        </div>
+        <div class="col-md-3">
+        </div>
+        
+    </div>
+</div>

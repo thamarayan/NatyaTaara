@@ -1,0 +1,47 @@
+<div class="container-fluid cf-registration">
+    <div class="row">
+        <div class="col-md-4 col-2" style="text-align: right;">
+            <svg width="10" height="600">
+                <rect width="10" height="600" style="fill:rgb(208, 162, 242);stroke-width:3;stroke:rgb(0,0,0)" />
+              </svg>
+        </div>
+        <div class="col-md-4 col-9">
+            <h3 class="regisHead">COURSE REGISTRATION</h3>
+            <form action="/user/newRegistration" method="post" style="color: white;">
+                <div class="mb-3">
+                    <label for="studentName" class="form-label"><span style="color: yellow;">Student Name</span></label>
+                    <input type="text" pattern="[a-zA-Z]+" required oninvalid="setCustomValidity('Please enter a valid name.')" oninput="this.setCustomValidity('')" name="studentName" class="form-control" id="studentName"  placeholder="Student's Name...">
+                </div>
+                <div class="mb-3">
+                    <label for="studentAge" class="form-label"><span style="color: yellow;">Age</span></label>
+                    <input type="number" min="6" max="80" required name="studentAge" class="form-control" id="studentAge" placeholder="Age... ">
+                </div>
+                <div class="mb-3">
+                    <label for="contact" class="form-label"><span style="color: yellow;">Contact</span></label>
+                    <input type="tel" name="contact" required pattern="[789][0-9]{9}" oninvalid="setCustomValidity('Please enter valid contact.')" oninput="this.setCustomValidity('')" class="form-control" id="contact" placeholder="Contact No... ">
+                </div>
+                <div class="mb-3">
+                    <label for="address" class="form-label"><span style="color: yellow;">Address</span></label>
+                    <textarea type="text" name="address" required class="form-control" rows="3" id="address" placeholder="Address... "></textarea>
+                </div>
+                <div class="mb-3">
+                    <label for="contact" class="form-label"> <span style="color: yellow;">Course Selected :</span></label> &nbsp;
+                    <label class="form-label"><%=newCourse.title %> </label> <br>
+                    <label for="contact" class="form-label"><span style="color: yellow;">Level :</span></label> &nbsp;
+                    <label class="form-label"><%=newCourse.level %> </label> <br>
+                    <label for="contact" class="form-label"><span style="color: yellow;">Fees :</span></label> &nbsp;
+                    <label class="form-label">&#8377; <%=newCourse.fees %> </label>
+                </div>
+                <input type="hidden" value="<%= newCourse._id %>" name="courseId">
+                <input type="hidden" value="<%= csrfToken %>" name="_csrf">
+                <div class="mb-3">
+                    <button type="submit" class="btn btn-sm btn-outline-warning">Enroll</button>
+                </div>
+
+            </form>
+        </div>
+        <div class="col-md-4">
+            <!-- <img src="/images/teacher.png" alt="" style="width: 75%;"> -->
+        </div>
+    </div>
+</div>

@@ -1,0 +1,56 @@
+
+<div class="container-fluid cf-dashboard">
+    <div class="row">
+        <div class="col-md-12 col-12" style=" padding-bottom: 2%;">
+            <h2 style="color: black; background-color:rgba(208, 162, 242);">WORKSHOPS</h2>
+            
+            <a href="/" style="text-decoration: none; color: yellow;">Back to main page</a><br>
+            <p class="text-muted">Recent workshops listed first</p>
+        </div>
+        <% if (workshops.length > 0) { %>
+         
+        <% workshops.forEach(workshop => { %>
+          <% if ((workshop.date > today) ) { %>
+          <div class="col-md-4" style="padding-bottom: 5%;">
+          
+              <div class="card" style="width: 20rem; color: white; border-radius: 2%;">
+                  <img src="<%= workshop.imagePath %>" class="card-img-top" alt="...">
+                  <div class="card-body" style="padding: 0% 0% 4%">
+                      <div class="card-header" style="color: black; background-color: rgba(208,162,242); margin-bottom: 5%;">
+                          <h5 class="card-title" style="margin-bottom: 2%;"><%= workshop.title %></h5>
+                      </div>
+                    
+                    <h6 class="card-subtitle mb-2" style="padding: 5% 0%; color: yellow;"><span style="color: white;">Schedule:</span> <%= workshop.time %> | <%= workshop.date.toLocaleDateString() %></h6>
+                    <!-- <p class="card-text" style="padding: 2% 0%;"><span style="color: yellow;">Description <br></span><%= workshop.desc%></p>
+                    <p class="card-text"><span style="color: yellow;">Type : </span><%= workshop.type%></p>
+                    <% if (workshop.type === 'zoom') { %>
+                      <p class="card-text"><span style="color: yellow;">Online Zoom Session</p>
+                    <% } else { %>
+                      <p class="card-text"><span style="color: yellow;">Venue Planned :</span> <br> <%= workshop.venue %></p> 
+                    <% } %> -->
+                  
+                      
+                      <% if (workshop.status) { %>
+                        <a role="button" href="/enrollWorkshop/<%= workshop._id %>" style="font-weight:bold; margin: 5% 0%;" class="btn btn-light btn-sm payButton"> REGISTER </a>
+                      <% } else { %>
+                        <a role="button" href="/enrollWorkshop/<%= workshop._id %>" style="font-weight:bold; margin: 5% 0%;"  class="btn btn-secondary btn-sm disabled"> Temporarily Unavailable</a> 
+                      <% } %>
+                    
+                  
+                  
+                    
+                    
+                  </div>
+              </div>
+
+          </div>
+          <% } %>
+        <% }) %>
+
+        <% } else { %>
+         
+          <p style="padding: 5% 5% 10%;">Please watch this space for new Workshops!</p>
+
+        <% } %>
+    </div>
+</div>

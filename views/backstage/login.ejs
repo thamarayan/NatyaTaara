@@ -1,0 +1,40 @@
+<div class="containerfluid cf-signin">
+    <div class="row">
+        <div class="col-md-4 col-2" style="text-align: right;">
+            <svg width="10" height="100%">
+                <rect width="10" height="100%" style="fill:rgb(208, 162, 242);stroke-width:3;stroke:rgb(0,0,0)" />
+              </svg>
+              
+        </div>
+        <div class="col-md-4 col-8" style="color: white;">
+            
+            <div class="mb-3">
+                <h5>Backstage Admin</h5>
+                <img src="/images/logo1.png" style="width: 20%;" alt="">
+            </div>
+            <form action="/backstage/login" method="post">
+                <% if (message != null) { %>
+               
+                    
+                     <p> <span style="background-color: rgb(208, 162, 242); color: black; padding: 3px;"><%= message %></span></p>
+                    
+                  
+                 <% } %>
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Email address</label>
+                <input type="email" name="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+              </div>
+              <div class="mb-3">
+                <label for="exampleFormControlInput2" class="form-label">Password</label>
+                <input type="password" name="password" class="form-control" id="exampleFormControlInput2" placeholder="Enter your password">
+              </div>
+              
+              <div class="mb-3">
+                  <button type="submit" class="btn btn-sm btn-outline-warning">Log In</button>
+                  <p class="text-muted">Only for Admins</p>
+              </div>
+            </form>
+        </div>
+        <div class="col-md-4 col-2"></div>
+    </div>
+</div>

@@ -1,0 +1,89 @@
+<div class="container-fluid cf-testPage" style="color: white; padding: 2% 10% 10%;">
+  <div class="row">
+    <a href="/backstage/dashboard" style="text-decoration: none; color:yellow; text-align: center;">Back to Dashboard</a>
+
+    <% if (students.length >0) { %>
+     
+    
+    <!-- First Module -->
+    <div class="col-md-12" style="padding:0% 0% 2%;">
+      <h2 style="text-align: center; padding: 0% 0% 2%;">MARK PAID MODULE</h2> 
+      <form action="/backstage/markPaid" method="post">
+      <table class="table table-responsive" style="color: white;">
+        <thead>
+          <tr>
+            
+            <th scope="col">Student</th>
+            <th scope="col">FeesStatus</th>
+            <th scope="col">Mark Paid</th>
+          </tr>
+        </thead>
+        <tbody>
+
+          <% if (students.length>0) { %>
+          
+            <% students.forEach(student => { %>
+              
+              <% if (student.feesStatus === false) { %>
+              <tr>
+                <td><%= student.studentName %></td>
+                <td>Pending</td>
+                <td><input type="checkbox" name="ids" id="ids" value="<%= student._id %>"></td>
+              </tr>
+              <% } %>
+           
+          <% }) %>
+
+         
+          <% } %>
+         
+         
+        </tbody>
+      </table>
+      <button type="submit" class="btn btn-primary btn-sm"> Make Paid</button>
+      </form>
+    </div>
+
+    <!-- Second Module -->
+    <div class="col-md-12" style="padding:0% 0% 2%;">
+      <h2 style="text-align: center; padding: 0% 0% 2%;">MARK UNPAID MODULE</h2>
+      <form action="/backstage/markUnpaid" method="post">
+      <table class="table table-responsive" style="color: white;">
+        <thead>
+          <tr>
+            
+            <th scope="col">Student</th>
+            <th scope="col">FeesStatus</th>
+            <th scope="col">Mark Paid</th>
+          </tr>
+        </thead>
+        <tbody>
+
+          <% if (students.length>0) { %>
+          
+            <% students.forEach(student => { %>
+              
+              <% if (student.feesStatus === true) { %>
+              <tr>
+                <td><%= student.studentName %></td>
+                <td>Paid</td>
+                <td><input type="checkbox" name="ids" id="ids" value="<%= student._id %>"></td>
+              </tr>
+             
+              <% } %>
+           
+          <% }) %>
+          <% } %>
+         
+         
+        </tbody>
+      </table>
+      <button type="submit" class="btn btn-primary btn-sm"> Mark Unpaid</button>
+      </form>
+    </div>
+    
+    <% } else { %>
+      <p style="color: yellow; padding:5%;">Students Yet to be added</p>
+    <% } %> 
+  </div>
+</div>

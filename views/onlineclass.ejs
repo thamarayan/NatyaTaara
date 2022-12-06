@@ -1,0 +1,64 @@
+<div class="containerfluid cf-classes">
+    <div class="row">
+      <div class="col-md-12 class-1" style="text-align: center;">
+        <h1 class="class-h1" style="display: inline-block;">Online Classes</h1> <a href="/studioclass" class="links"> (Switch to Studio Class)</a>
+    </div>
+
+        <% if (classes) { %>
+         <% classes.forEach(classs => { %>
+          <% if (classs.classType == 'ONLINE CLASS') { %>
+         
+                <div class="col-md-12 cards">
+                  <div class="card mb-3" style="max-width: 840px;">
+                      <div class="row g-0">
+                        <div class="col-md-4">
+                          <img src="<%= classs.imagePath %>" class="img-fluid rounded-start" alt="...">
+                        </div>
+                        <div class="col-md-8">
+                          <span class="badge bg-warning baddge" style="margin-left: 30em; color: black;"><%= classs.classType %></span>
+                          <div class="card-body">
+                            <h5 class="card-title"><%= classs.title %></h5>
+                            <p class="card-text">Age Group : <%= classs.ageGroup %></p>
+                            <p class="card-text">Level : <%= classs.level %></p>
+                            <p class="card-text">
+                              <table class="table table-responsive">
+                                <thead>
+                                <tr>
+                                  <th scope="col">Sessions</th>
+                                  <th scope="col">Timings</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr>
+                                  <td><%= classs.session1 %><s/td>
+                                  <td><%= classs.timing1 %></td>
+                                </tr>
+                                <tr>
+                                  <td><%= classs.session2 %></td>
+                                  <td><%= classs.timing2 %></td>
+                                </tr>
+                              </tbody>
+                              </table>
+                            </p>
+                            <p class="card-text">Fees : &#8377; <%= classs.fees %> /-</p>
+                            <% if (classs.status) { %>
+                              <a href="/user/add-course/<%= classs._id %>" role="button" class="btn btn-outline-light joinBtn">Join Now</a>
+                            <% } else { %>
+                              <a href="#" role="button" class="btn btn-secondary joinBtn disabled">Join Now</a>
+                            <% } %>
+                            
+                          </div>
+                          
+                        </div>
+                      </div>
+                    </div>
+              </div>
+
+          <% } %>
+         <% }) %>
+        <% } %>
+       
+
+     
+    </div>
+</div>

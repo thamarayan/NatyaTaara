@@ -1,0 +1,94 @@
+<div class="container-fluid cf-coursesList">
+    <div class="row">
+        <div class="col-md-12 col-12">
+            <h1 style="color: white; text-align: center; display: inline-block;">COURSE LIST</h1>
+            <a href="/backstage/dashboard" style="text-decoration: none; text-align: center; color: yellow;">Back to Dashboard</a>
+            <% if (courseList.length>0) { %>
+             
+            <table class="table table-responsive table-striped table-dark " style="color:white; text-align: left;">
+                <thead>
+                  <tr>
+                    <th scope="col">Title</th>
+                    <th scope="col">Age Group</th>
+                    <th scope="col">Level</th>
+                    <th scope="col">Fees</th>
+                    <th scope="col">Class Type</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Update?</th>
+                  </tr>
+                </thead>
+                <tbody>
+                   
+                <% courseList.forEach(course => { %>
+                  <tr> 
+                    <td><%= course.title %></td>
+                    <td><%= course.ageGroup %></td>
+                    <td><%= course.level %></td> 
+                    <td><%= course.fees %></td>
+                    <td><%= course.classType %></td>
+                    <td>
+                      
+                        <% if (course.status) { %>
+                          <a role="button" href="/backstage/makeInactive/<%= course._id %>" class="btn btn-sm btn-danger">Make Unavailable</a>
+                         <% } else { %>
+                            <a role="button" href="/backstage/makeActive/<%= course._id %>" class="btn btn-sm btn-success">Make Available</a>
+                        <% } %>
+                      
+                    </td>
+                    <td>
+                      <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal-<%=course._id%>">
+                      Update
+                    </button>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModal-<%=course._id%>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <div class="modal-dialog">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel" style="color: black;">Coure Update</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                          </div>
+                          <div class="modal-body" style="background-color: black;">
+                            <form action="/backstage/updateCourse/<%=course._id%>" method="post" style="background-color: black;">
+                              <div class="mb-3">
+                                <label for="title" class="form-label">Title</label>
+                                <input type="text" class="form-control" id="title" name="title" value="<%= course.title%>">
+                                <label for="age" class="form-label">Age Group</label>
+                                <input type="text" class="form-control" id="age" name="age" value="<%= course.ageGroup%>">
+                                <label for="level" class="form-label">Level</label>
+                                <input type="text" class="form-control" id="level" name="level" value="<%= course.level%>">
+                                <label for="session1" class="form-label">Session 1</label>
+                                <input type="text" class="form-control" id="session1" name="session1" value="<%= course.session1%>">
+                                <label for="timing1" class="form-label">Timing</label>
+                                <input type="text" class="form-control" id="timing1" name="timing1" value="<%= course.timing1%>">
+                                <label for="session2" class="form-label">Session 2</label>
+                                <input type="text" class="form-control" id="session2" name="session2" value="<%= course.session2%>">
+                                <label for="timing2" class="form-label">Timing</label>
+                                <input type="text" class="form-control" id="timing2" name="timing2" value="<%= course.timing2%>">
+                                <label for="fees" class="form-label">Fees</label>
+                                <input type="text" class="form-control" id="fees" name="fees" value="<%= course.fees%>">
+                                <label for="classType" class="form-label">Class Type</label>
+                                <input type="text" class="form-control" id="classType" name="classType" value="<%= course.classType%>">
+                              </div>
+                              <div class="mb-3">
+                                <button type="submit" class="btn btn-primary btn-sm">Update</button>
+                              </div>
+                            </form>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    </td>     
+                  </tr>
+                  <% }) %>                  
+                </tbody>
+            </table>
+
+            <% } %>
+        </div>
+    </div>
+</div>
